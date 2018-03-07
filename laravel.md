@@ -54,4 +54,22 @@ sudo apt install php-zip
 
 **4、安装mysql**
 
-这玩意明儿折腾。
+简单一句话 
+
+```
+sudo apt-get install mysql-server php-mysql
+```
+
+中间会要求你输入数据库密码。（默认为空）方便起见，回车就是了，设密码其实贼烦。讲道理我为啥要给linux mint设密码·····自己看东西的时候真的应该是怎么方便怎么来。
+
+**5、安装php**
+
+也简单
+
+```
+sudo apt-get install php-fpm
+```
+
+很多教程上会要求你写老的版本号，我觉得还是按默认的来就完了，毕竟现在发布的东西支持的东西也都变了，能否继承其实还挺暧昧。
+
+之后有问题再面向StackOverflow编程就是了，谁还不是踩着坑前进的。
