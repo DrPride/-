@@ -17,3 +17,20 @@
 ```
 
 到底是要写到哪里去，是要自己创建一个json文件？可是这个东西要写在哪儿呢？之说目的是产生这样的文件，意味着，这个是之后动作的产物？
+
+
+
+然后这个命令
+
+```
+php artisan migrate:make create_athomes_table
+```
+
+一个是要在根目录里跑，另外一个这个语法现在改掉了。
+
+变成这样了：
+
+```
+php artisan make:migration create_athomes_table
+```
+
