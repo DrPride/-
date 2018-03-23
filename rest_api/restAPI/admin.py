@@ -3,7 +3,7 @@ from restAPI.models import Post, Tag, Comment
 
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('author', 'pub_time', 'title', 'excerpt')
+    list_display = ('author', 'pub_time', 'id', 'led13')
 
 
 class CommentAdmin(admin.ModelAdmin):

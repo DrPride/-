@@ -49,13 +49,14 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
     Post序列化器
     """
     author = UserSerializerLite(read_only=True)
-    tags = TagSerializerLite(many=True)
+    #tags = TagSerializerLite(many=True)
     comments = CommentSerializerLite(many=True, read_only=True)
 
     class Meta:
         model = Post
-        fields = ('url', 'id', 'title', 'pub_time', 'author', 'body', 'tags', 'comments')
+        fields = ('url', 'id', 'pub_time','led13', 'temperature', 'sensors1', 'sensors2', 'author' , 'comments')
 
+    '''
     @staticmethod
     def addtag(tags, post):
         """
@@ -74,7 +75,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
             if not flag:
                 t = Tag.objects.create(name=tag['name'])
                 post.tag.add(t)
-
+    '''
     def create(self, validated_data):
         """
         重写 create ,从 validated_data 中取出 tag ,
@@ -120,8 +121,9 @@ class PostSerializerLite(serializers.HyperlinkedModelSerializer):
     #     return ret
 
     class Meta:
+        #can make the json
         model = Post
-        fields = ('url', 'title', 'author', 'excerpt')
+        fields = ('url', 'id', 'author', 'led13')
 
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):

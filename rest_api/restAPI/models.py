@@ -13,21 +13,19 @@ class Post(models.Model):
     tag:标签,多对多
     author:作者,一对多
     """
-    title = models.CharField(max_length=100, blank=True, default="")
-    body = models.TextField()
+    #title = models.CharField(max_length=100, blank=True, default="")
+    #body = models.TextField()
     pub_time = models.DateTimeField(auto_now_add=True)
-    tags = models.ManyToManyField('Tag', related_name='posts', blank=True)
+    led13 = models.BooleanField(default = False)
+    temperature = models.FloatField(default = True)
+    sensors1 = models.FloatField(default = True)
+    sensors2 = models.FloatField(default = True) 
+    #tags = models.ManyToManyField('Tag', related_name='posts', blank=True)
     author = models.ForeignKey('auth.User', related_name='posts', on_delete=models.CASCADE)
 
     class Meta:
         ordering = ('-pub_time',)
 
-    # 文章摘要
-    def excerpt(self):
-        excerpt = str(self.body)
-        if excerpt.__len__() > 50:
-            excerpt = excerpt[:50]+'...'
-        return excerpt
 
 
 class Tag(models.Model):
