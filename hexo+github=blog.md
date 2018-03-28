@@ -10,6 +10,8 @@ https://blog.csdn.net/gdutxiaoxu/article/details/53576018
 
 然而git的exe下了半天没下成功，不知道哪里出了问题。明儿整。
 
+//这里的原因还是要写一下
+
 
 
 
@@ -27,3 +29,6 @@ https://blog.csdn.net/gdutxiaoxu/article/details/53576018
 现在先暂时贴另一个，明天再试试看。
 
 https://www.jianshu.com/p/189fd945f38f
+
+emmm，好吧，我成功了。
+
