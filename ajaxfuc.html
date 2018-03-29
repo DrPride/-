@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <script type="text/javascript">
 function loadXMLDoc()
 {
@@ -22,7 +23,7 @@ xmlhttp.onreadystatechange=function()
 
     }
   }
-xmlhttp.open("GET","http://www.w3school.com.cn/ajax/demo_get2.asp?fname=Bill&lname=Gates",true);
+xmlhttp.open("GET","http://192.168.1.102:8000/api/posts/2.json",true);
 xmlhttp.send();
 }
 </script>
