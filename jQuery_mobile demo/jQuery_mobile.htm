@@ -10,7 +10,7 @@
     function showtemper() {
         // body...
         $.ajax({
-            url: '192.168.1.102:8000/api/posts/2',
+            url: 'http://192.168.1.102:8000/api/posts/2.json',
             type: 'GET',
             datatType: 'json',
             async: true,
@@ -24,7 +24,7 @@
 
     $(document).ready(function(){
         showtemper();
-        alert('asduisfhdf');
+        //alert('asduisfhdf');
     })
 </script>
 </head>
