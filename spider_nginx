@@ -1,0 +1,63 @@
+# -*- coding: utf-8 -*-
+import requests
+from bs4 import BeautifulSoup as bs
+import pdb
+import pdfkit as pdf
+
+url = 'http://tengine.taobao.org/book/index.html'
+response = requests.get(url)
+
+soup = bs(response.text.encode('utf-8'), 'lxml')
+urls = soup.find_all('li', class_="toctree-l2" )
+herf = []
+print(soup.get_text())
+for i in urls:
+	#print(i)
+	i = i.find('a')
+	idl = i.get('href')
+	herf.append(idl)
+
+#print(herf)
+pdb.set_trace()
+base_url = 'http://tengine.taobao.org/book/'
+
+'''
+for i in range(len(herf)):
+	herf[i] = base_url+herf[i] 
+
+print(herf)
+
+pdf.from_url(herf, 'out.pdf')
+'''
+def getHtml(url):  
+    html = requests.get(url)
+    thissoup = bs(html.text, 'lxml') 
+    content = thissoup.find_all('div', class_ = 'body')
+    return content  
+  
+def saveHtml(file_name, file_content):    
+#    注意windows文件命名的禁用符，比如 /    
+    with open (file_name + ".html","wb") as f:  
+#   写文件用bytes而不是str，所以要转码    
+        f.write(file_content)
+        #print(file_content)    
+'''
+'''
+name = 0
+for i in herf:
+	htmlcontent = getHtml(base_url+i)
+	#pdf_name = str(name)+'.pdf'
+	#pdf.from_url(base_url + i, pdf_name)
+	#saveHtml(str(name), htmlcontent.content)
+	name += 1
+	print(name)
+	print(htmlcontent)
+'''
+
+
+'''
+'''
+for i in urls:
+	res = requests.get(i).text
+	print(res)
+'''
