@@ -6,6 +6,7 @@ urlpatterns = [
 	path('', views.PostList.as_view()),
 	#regardless to the detail
 	path('<int:pk>/', views.PostDetail.as_view()),
+	path('index', views.app)
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
