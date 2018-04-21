@@ -2,7 +2,7 @@ from rest_framework import serializers
 from restAPI.models import Post
 
 class restAPISerializer(serializers.ModelSerializer):
-    # realize the Create and Update Methods
+    # realize the Create and Update Methodspost
     class Meta:
         model = Post
         # HyperLinkedxx make the url

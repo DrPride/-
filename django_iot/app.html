@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" >
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script>
+var dataLength = [];
+
+function drawTemp() {
+    var zero = [];
+    $.getJSON('/athome/', function(json) {
+        var items = [];
+        dataLength.push(json.length);
+        $.each(json, function(key, val) {
+            zero.push(val.temperature);
+        });
+        chart = new Highcharts.Chart({
+            color: {
+                linearGradient: {
+                    x1: 0,
+                    x2: 0,
+                    y1: 0,
+                    y1: 1
+                },
+                stops: [
+                    [0, '#003399'],
+                    [1, '#3366AA']
+                ]
+            },
+            chart: {
+                renderTo: 'Tchart',
+                type: 'spline'
+            },
+            title: {
+                text: '本月温度情况'
+            },
+            subtitle: {
+                text: ''
+            },
+            xAxis: {
+                categories: [],
+                title: {
+                    text: ''
+                }
+            },
+            yAxis: {
+                title: {
+                    text: '温度 (°C)'
+                }
+            },
+            tooltip: {
+                backgroundColor: '#FCFFC5',
+                borderColor: 'black',
+                borderRadius: 10,
+                borderWidth: 1,
+                enabled: true,
+                formatter: function() {
+                    return '<b>' + this.series.name + '</b><br/>' + this.x + ': ' + this.y + '°C';
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -10,
+                y: 100,
+                borderWidth: 0
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: false
+                }
+            },
+            series: [{
+                name: '本月',
+                data: zero
+            }, {
+                name: '对比',
+                data: [26.0]
+            }]
+        });
+    });
+};
+
+function showTemper() {
+    var length = dataLength[0];
+    $.ajax({
+        url: '/athome/' + length,
+        type: 'GET',
+        dataType: 'json',
+        async: true,
+        timeout: 1000,
+        error: function() {},
+        success: function(sdata) {
+            $('.temperStatus').empty();
+            $('.temperStatus').append(sdata.temperature);
+        }
+    });
+};
+
+$(document).ready(function() {
+    setInterval("drawTemp();", 5000);
+    setInterval("showTemper();", 800);
+    drawTemp();
+    showTemper();
+});
+</script>
+</head>
+<body>
+	<div data-role="page">
+
+        <div data-role="header" class="ui-bar ui-bar-b" class="jqm-header">
+            <h1>基础控制
+</h1>
+        </div>
+
+        <div data-role="collapsible" data-collapsed="false">
+            <h3>查看温度温度情况</h3>
+        <div>
+        <div id="Tchart" style="min-width:800px;width:100%;height:300px"></div>
+        </div>
+    </div>
+    <div data-role="footer" class="ui-bar ui-bar-b" data-position="fixed">
+        <h4><a href="http://www.phodal.com">Power by Phodal</a></h4>
+</div>
+</body>

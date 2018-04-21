@@ -17,4 +17,10 @@ def test_post_temp():
 	#print(json.dumps(json_data))
 	return rsp
 
-test_post_temp()
+
+def http_delete():
+    url='http://localhost:8000/'
+    for i in range(80,81):
+    	r = requests.delete(url+str(i))
+
+http_delete()
