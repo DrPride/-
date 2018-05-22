@@ -28,8 +28,6 @@ python manage.py loaddata db.json
 
 
 
-
-
 _2、额，现在还不知道，可能在树莓派里头放个挖矿机吧_
 
 _3、还是不知道，可能玩玩apt攻击？_
@@ -83,6 +81,4 @@ p{
 
 
 
-现在这个Arduino_python只是用pyserial这个包在实现一些简单的串口通信，之后的更新详情会记录在那个目录里头的readme.md
-目前是能将Arduino里头的信息在python里直接读出来
-然后为啥GitHub上python对Arduino的支持这么少？？作为控制器来说python难道不会上层逻辑上更有优势吗？？还是说面向底层的语言会更加有优势吗？？
+
